@@ -15,7 +15,9 @@
 .passage {
 	transition: 4.25s linear;
 	-webkit-transition: 0.25s linear;
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript">
+}
+</style><script role="script" id="twine-user-script" type="text/twine-javascript">
+
 
 
 
@@ -113,7 +115,7 @@ You have been adventuring for $days days, and you have $coins coins and $hp hp. 
 [[Back-&gt;main]] </tw-passagedata>
 <tw-passagedata pid="6" name="explore" tags="" position="1556,0">Double-click this passage to edit it.</tw-passagedata>
 <tw-passagedata pid="7" name="fight" tags="" position="97,263">
-The monsters level is $monsterlevel and has $monsterhp hp
+(colour: red)[The monsters level is $monsterlevel and has $monsterhp hp
 ---
 Your hp is $hp and you have $coins coins
 {
@@ -154,6 +156,7 @@ Your hp is $hp and you have $coins coins
 
 ]
 }
+]
 &lt;style&gt;
 body
 {
@@ -211,7 +214,7 @@ You collect $drop coins from the monster carcass!  Your spoils are currently $sp
   (link: &quot;Load game&quot;)[(load-game:&quot;Slot A&quot;)]
 ]}
 </tw-passagedata>
-<tw-passagedata pid="13" name="Swords" tags="" position="816,414">So your looking for a sword eh
+<tw-passagedata pid="13" name="Swords" tags="" position="817,414">So your looking for a sword eh
 ---
 Small dagger - $20
 Pike - $40 
@@ -219,19 +222,19 @@ Short sword - $40
 Long sword - $60 
 {
 (click: &quot;Small dagger&quot;)[
-(if: $smalldagger is 0 and $coins &gt;= 20)[
+(if: $smalldagger is 0 and $coins &gt;= 20)[(if: $pld is &gt;= 1 (set: $pld to 0))
 (set: $pld to $pld + 1)[Good Purchase] ] 
 (else:)[You Don&#39;t got the Coin.] ]
 (click: &quot;Pike&quot;)[
-(if: $pike is 0 and $coins &gt;= 40)[
+(if: $pike is 0 and $coins &gt;= 40)[(if: $pld is &gt;= 1 (set: $pld to 0))
 (set: $pld to $pld + 2)[Good Purchase] ] 
 (else:)[You Don&#39;t got the Coin.] ]
 (click: &quot;Short sword&quot;)[
-(if: $shortsword is 0 and $coins &gt;= 40)[
+(if: $shortsword is 0 and $coins &gt;= 40)[(if: $pld is &gt;=  (set: $pld to 0))
 (set: $pld to $pld + 2)[Good Purchase] ] 
 (else:)[You Don&#39;t got the Coin.] ]
 (click: &quot;Long sword&quot;)[
-(if: $longsword is 0 and $coins is &gt;= 60)[
+(if: $longsword is 0 and $coins is &gt;= 60)[(if: $pld is &gt;= 1 (set: $pld to 0))
 (set: $pld to $pld + 4)[Good Purchase] ] 
 (else:)[You Don&#39;t got the Coin.] ]
 }
@@ -251,15 +254,15 @@ Light leather - $50
 Heavy leather - $100
 Metal suit - 150
 (click: &quot;Light leather&quot;)[
-(if: $lightleather is 0 and $coins &gt;= 50)[
+(if: $lightleather is 0 and $coins &gt;= 50)[(if: $plde is &gt;= 1 (set: $plde to 0))
 (set: $plde to $plde + 1)[Good Purchase] ] 
 (else:)[You Don&#39;t got the Coin.] ]
 (click: &quot;Heavy leather&quot;)[
-(if: $heavyleather is 0 and $coins &gt;= 100)[
+(if: $heavyleather is 0 and $coins &gt;= 100)[(if: $plde is &gt;= 1 (set: $plde to 0))
 (set: $plde to $plde + 2)[Good Purchase] ] 
 (else:)[You Don&#39;t got the Coin.] ]
 (click: &quot;Metal suit&quot;)[
-(if: $metalsuit is 0 and $coins &gt;= 200)[
+(if: $metalsuit is 0 and $coins &gt;= 200)[(if: $plde is &gt;= 1 (set: $plde to 0))
 (set: $plde to $plde + 3)[Good Purchase] ] 
 (else:)[You Don&#39;t got the Coin.] ]</tw-passagedata>
 <tw-passagedata pid="16" name="Help" tags="" position="81,0">[[credits]]</tw-passagedata>
@@ -316,16 +319,23 @@ body
 &lt;/style&gt;
 
 file:///C:/Users/Taige/Pictures/images/imgres.jpg</tw-passagedata>
-<tw-passagedata pid="25" name="Into" tags="" position="625,1">&lt;div class=&quot;passage&quot;&gt;(transition: &quot;dissolve&quot;)[You live in a Pecfull village in the hills next to the forest, where you and you&#39;re familly are the proud owners to the local blacksmith,](transition: &quot;dissolve&quot;)[ and your father wants you to be the next in line when he is gone. only you want to go an adventure.](transition: &quot;dissolve&quot;)[ [[next]] ]
+<tw-passagedata pid="25" name="Into" tags="" position="625,1">You live in a Pecfull village in the hills next to the forest, where you and you&#39;re familly are the proud owners to the local blacksmith, and your father wants you to be the next in line when he is gone. only you want to go an adventure.[[next]] 
 
 [[Skip-&gt;main menu]] 
 
 </tw-passagedata>
-<tw-passagedata pid="26" name="next" tags="" position="796,11">(transition: &quot;dissolve&quot;)[You want to explore the lands and find treasures byeond the imagination.](transition: &quot;dissolve&quot;)[(display: &quot;tragdey&quot;)]</tw-passagedata>
-<tw-passagedata pid="27" name="tragdey" tags="" position="921.0001,37">(transition: &quot;dissolve&quot;)[And so your mother supporting you you both go in to the forest armed to start traing with wooden swords.[[start training]] ]</tw-passagedata>
-<tw-passagedata pid="28" name="start training" tags="" position="1376,2">(transition: &quot;pulse&quot;)[So the first thing you will need to now about fighting is to wtach your health and know when to flee]
+<tw-passagedata pid="26" name="next" tags="" position="796,11">You want to explore the lands and find treasures byeond the imagination.[[next-&gt;tragdey]]</tw-passagedata>
+<tw-passagedata pid="27" name="tragdey" tags="" position="921,37">And so your mother supporting you you both go in to the forest armed to start traing with wooden swords.[[start training]]</tw-passagedata>
+<tw-passagedata pid="28" name="start training" tags="" position="1377,1">(transition: &quot;pulse&quot; )[So the first thing you will need to now about fighting is to wtach your health and know when to flee
+Ok (click: &quot;Ok&quot;)[most monsters are very low level mainly level 1 to 5 and most give the same amount of loot but in the heat of the moment you may forget about your items
+got it(click: &quot;got it&quot;)[In your jounery you may encounter a monster that is stronger than normal and normal swings just won&#39;t cut it, sometimes  litteraly; so you will have to pick and choose where to swing I will demenstrate. Ok time to spar
+Ok let&#39;s go [[boss fight-&gt;mom fight]] ] ]
 
-</tw-passagedata>
+
+
+
+[[main-&gt;init]] ]</tw-passagedata>
+<tw-passagedata pid="29" name="mom fight" tags="" position="1376,151">Double-click this passage to edit it.</tw-passagedata>
 </tw-storydata>
 
 
