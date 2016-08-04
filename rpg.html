@@ -16,13 +16,23 @@
 	transition: 4.25s linear;
 	-webkit-transition: 0.25s linear;
 }
+
+
+
+
+
 </style><script role="script" id="twine-user-script" type="text/twine-javascript">
 
 
 
 
 
-</script><tw-passagedata pid="1" name="init" tags="" position="656,272">{(set: $hp to 9 + $lvl) 
+
+
+
+
+
+</script><tw-passagedata pid="1" name="init" tags="" position="655,271">{(set: $hp to 9 + $lvl) 
 
 (set: $shp to 0)
 
@@ -46,7 +56,7 @@
 
 (set: $plde to 0)
 
-(set: $coins to 10) 
+(set: $coins to 123456543212) 
 
 (set: $days to 0)
 
@@ -54,10 +64,7 @@
 
 (set: $hp to 10 )
 
-(display: &quot;main&quot;)}
-
-
-</tw-passagedata>
+(display: &quot;main&quot;)}</tw-passagedata>
 <tw-passagedata pid="2" name="main" tags="" position="652,397">
 You have been adventuring for $days days, and you have $coins coins and $hp hp. Your lvl is $lvl
 [[rest]]
@@ -141,7 +148,7 @@ Your hp is $hp and you have $coins coins
 ]
 (else:)[ You hit the monster!  
 
-  (set:$monsterhp = $monsterhp - $lvl + $pld) 
+  (set:$monsterhp = $monsterhp - $pld) 
 
   (if: $monsterhp &lt; 1)[ The [[monster is dead]]! ]  
 
@@ -187,10 +194,10 @@ You collect $drop coins from the monster carcass!  Your spoils are currently $sp
 
 [[go home|collect spoils]]
 </tw-passagedata>
-<tw-passagedata pid="10" name="start adventure" tags="" position="660,546">(set: $spoils to 0) (set: $streak to 0) 
+<tw-passagedata pid="10" name="start adventure" tags="" position="651,550">(set: $spoils to 0) (set: $streak to 0) 
 
 (display: &quot;adventure&quot;)</tw-passagedata>
-<tw-passagedata pid="11" name="collect spoils" tags="" position="82,515">(set: $coins to $coins + $spoils)
+<tw-passagedata pid="11" name="collect spoils" tags="" position="98,520">(set: $coins to $coins + $spoils)
 
 (set: $EXP to $EXP + $XPG)
 
@@ -214,34 +221,32 @@ You collect $drop coins from the monster carcass!  Your spoils are currently $sp
   (link: &quot;Load game&quot;)[(load-game:&quot;Slot A&quot;)]
 ]}
 </tw-passagedata>
-<tw-passagedata pid="13" name="Swords" tags="" position="817,414">So your looking for a sword eh
+<tw-passagedata pid="13" name="Swords" tags="" position="818,434">So your looking for a sword eh
+
 ---
 Small dagger - $20
 Pike - $40 
-Short sword - $40 
-Long sword - $60 
-{
-(click: &quot;Small dagger&quot;)[
-(if: $smalldagger is 0 and $coins &gt;= 20)[(if: $pld is &gt;= 1 (set: $pld to 0))
-(set: $pld to $pld + 1)[Good Purchase] ] 
-(else:)[You Don&#39;t got the Coin.] ]
-(click: &quot;Pike&quot;)[
-(if: $pike is 0 and $coins &gt;= 40)[(if: $pld is &gt;= 1 (set: $pld to 0))
+Short sword - $50
+
+(click: &quot;Small dagger&quot;)[(if: $smalldagger is &gt; 0)[You have one allready]
+(if: $smalldagger is 0 and $coins &gt;= 20)[(set: $pld to 0)
 (set: $pld to $pld + 2)[Good Purchase] ] 
 (else:)[You Don&#39;t got the Coin.] ]
-(click: &quot;Short sword&quot;)[
-(if: $shortsword is 0 and $coins &gt;= 40)[(if: $pld is &gt;=  (set: $pld to 0))
-(set: $pld to $pld + 2)[Good Purchase] ] 
+(click: &quot;Pike&quot;)[(if: $pike is &gt; 0)[You have one allready]
+(if: $pike is 0 and $coins &gt;= 40)[(set: $pld to 0 )(set: $pike to $pike + 1)
+(set: $pld to $pld + 3)[Good Purchase] ] 
 (else:)[You Don&#39;t got the Coin.] ]
-(click: &quot;Long sword&quot;)[
-(if: $longsword is 0 and $coins is &gt;= 60)[(if: $pld is &gt;= 1 (set: $pld to 0))
+(click: &quot;Short sword&quot;)[(if:$shortsword is &gt; 0)[You have one allready]
+(if: $shortsword is 0 and $coins &gt;= 50)[(set: $pld to 0)
 (set: $pld to $pld + 4)[Good Purchase] ] 
 (else:)[You Don&#39;t got the Coin.] ]
-}
+[[back-&gt;shop]] 
+
 </tw-passagedata>
-<tw-passagedata pid="14" name="potions" tags="" position="1066,460">You won&#39;t find any better
+<tw-passagedata pid="14" name="potions" tags="" position="1066,462">You won&#39;t find any better
 ---
 Health potion - $20
+
 {
 (click: &quot;Health potion &quot;)[
 (if: $healthpotion is &gt;= 0 and $coins &gt;= 20)[
@@ -266,17 +271,18 @@ Metal suit - 150
 (set: $plde to $plde + 3)[Good Purchase] ] 
 (else:)[You Don&#39;t got the Coin.] ]</tw-passagedata>
 <tw-passagedata pid="16" name="Help" tags="" position="81,0">[[credits]]</tw-passagedata>
-<tw-passagedata pid="17" name="quit" tags="" position="1172,39">the world can wait you can leave
+<tw-passagedata pid="17" name="quit" tags="" position="1732,30">the world can wait you can leave
 
 **ARE YOU SURE YOU WANT TO QUIT**
 
 [[Yes i&#39;m sure-&gt;main menu]] OR  [[No i have too much adventuring to do-&gt;main]] </tw-passagedata>
 <tw-passagedata pid="18" name="LVL up" tags="" position="395,401">Congrats you have leved up your lvl is now $lvl
+(set: $pld to $pld + 1)
 
 
 
 [[Continue-&gt;main]] </tw-passagedata>
-<tw-passagedata pid="19" name="boss" tags="" position="249,131"></tw-passagedata>
+<tw-passagedata pid="19" name="boss" tags="" position="250,131">So I see you have been training while your mother was away well  I think you are not ready for this type of life. You are very weak still</tw-passagedata>
 <tw-passagedata pid="20" name="items" tags="" position="258,256">Backpack:
 ---
 Health Potion
@@ -303,7 +309,7 @@ Health Potion
 &lt;img src=&quot;file:C:\Users\Taige\Pictures\images/imgres.jpg&quot;
 img-size: 1000px 100px&gt;
 </tw-passagedata>
-<tw-passagedata pid="22" name="credits" tags="" position="72,640">Codder:Taige Tews
+<tw-passagedata pid="22" name="credits" tags="" position="76,732">Codder:Taige Tews
 Art desiner:Elizabeth
 Story and plot development:Taige,Elizabeth
 And non of this could be possibly without gizmo&#39;s Helpfull employes.</tw-passagedata>
@@ -325,17 +331,17 @@ file:///C:/Users/Taige/Pictures/images/imgres.jpg</tw-passagedata>
 
 </tw-passagedata>
 <tw-passagedata pid="26" name="next" tags="" position="796,11">You want to explore the lands and find treasures byeond the imagination.[[next-&gt;tragdey]]</tw-passagedata>
-<tw-passagedata pid="27" name="tragdey" tags="" position="921,37">And so your mother supporting you you both go in to the forest armed to start traing with wooden swords.[[start training]]</tw-passagedata>
-<tw-passagedata pid="28" name="start training" tags="" position="1377,1">(transition: &quot;pulse&quot; )[So the first thing you will need to now about fighting is to wtach your health and know when to flee
+<tw-passagedata pid="27" name="tragdey" tags="" position="986,0">And so your mother supporting you you both go in to the forest armed to start traing with wooden swords.[[start training]]</tw-passagedata>
+<tw-passagedata pid="28" name="start training" tags="" position="1378,1">(transition: &quot;pulse&quot; )[So the first thing you will need to now about fighting is to wtach your health and know when to flee
 Ok (click: &quot;Ok&quot;)[most monsters are very low level mainly level 1 to 5 and most give the same amount of loot but in the heat of the moment you may forget about your items
 got it(click: &quot;got it&quot;)[In your jounery you may encounter a monster that is stronger than normal and normal swings just won&#39;t cut it, sometimes  litteraly; so you will have to pick and choose where to swing I will demenstrate. Ok time to spar
-Ok let&#39;s go [[boss fight-&gt;mom fight]] ] ]
+Ok let&#39;s go [[boss fight-&gt;mom fight]] ] ] ]
 
 
 
 
-[[main-&gt;init]] ]</tw-passagedata>
-<tw-passagedata pid="29" name="mom fight" tags="" position="1376,151">Double-click this passage to edit it.</tw-passagedata>
+</tw-passagedata>
+<tw-passagedata pid="29" name="mom fight" tags="" position="1376,151">I won&#39;t go easy on you </tw-passagedata>
 </tw-storydata>
 
 
